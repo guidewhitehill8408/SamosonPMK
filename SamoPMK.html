@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>บ้านพักรับรองสถานีรายงานภูหมันขาว</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0a192f',
+                            950: '#030712'
+                        },
+                        gold: {
+                            500: '#d97706',
+                            600: '#b45309',
+                            400: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f8fafc;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom scrollbar for mobile experience */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .animate-bounce-short {
+            animation: bounce 0.8s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-4px); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased bg-slate-50 min-h-screen flex flex-col pb-20">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-navy-900 text-white sticky top-0 z-40 shadow-md border-b border-gold-500/30">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-400 flex items-center justify-center text-gold-400 text-lg shadow-inner">
+                    <i class="fa-solid font-bold fa-utensils"></i>
+                </div>
+                <div>
+                    <h1 class="text-base font-bold text-slate-100 leading-tight">สถานีรายงานภูหมันขาว</h1>
+                    <p class="text-xs text-gold-400 font-medium">ระบบจองสั่งอาหารล่วงหน้า (ห้อง VIP 1 - VIP 7)</p>
+                </div>
+            </div>
+            <div class="bg-navy-800 px-2.5 py-1 rounded-full text-xs text-slate-300 border border-slate-700 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>LINE OA</span>
+            </div>
+        </div>
+        
+        <!-- Workflow Indicator Bar (Updated 3 Steps) -->
+        <div class="bg-navy-950 px-4 py-2 border-t border-slate-800/80">
+            <div class="max-w-md mx-auto flex items-center justify-between text-xs font-medium">
+                <div id="step-1-indicator" class="flex items-center gap-1 text-gold-400 font-semibold">
+                    <span class="w-5 h-5 rounded-full bg-gold-500 text-navy-950 flex items-center justify-center text-[10px] font-bold">1</span>
+                    <span>1. ระเบียบ</span>
+                </div>
+                <div class="h-0.5 flex-1 bg-slate-700 mx-1.5 rounded" id="line-1-2"></div>
+                <div id="step-2-indicator" class="flex items-center gap-1 text-slate-400">
+                    <span class="w-5 h-5 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center text-[10px] font-bold">2</span>
+                    <span>2. เลือกอาหาร</span>
+                </div>
+                <div class="h-0.5 flex-1 bg-slate-700 mx-1.5 rounded" id="line-2-3"></div>
+                <div id="step-3-indicator" class="flex items-center gap-1 text-slate-400">
+                    <span class="w-5 h-5 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center text-[10px] font-bold">3</span>
+                    <span>3. ระบุผู้สั่ง&ห้อง</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-md mx-auto w-full flex-1 p-4">
+
+        <!-- TAB 1 (หน้าแรก): FOOD REGULATIONS & CONDITIONS -->
+        <section id="tab-regulations" class="space-y-4">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-navy-900 to-slate-800 rounded-2xl p-4 text-white shadow-lg border border-gold-500/20 relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 text-white/5 text-8xl font-black">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div class="relative z-10">
+                    <span class="bg-gold-500/20 text-gold-300 text-[11px] px-2.5 py-0.5 rounded-full border border-gold-500/40 font-medium inline-block mb-1">
+                        ข้อกำหนดการสั่งอาหาร
+                    </span>
+                    <h2 class="text-lg font-bold">ระเบียบการสั่งอาหารล่วงหน้า</h2>
+                    <p class="text-xs text-slate-300 mt-1">บ้านพักรับรองสถานีรายงานภูหมันขาว (ห้อง VIP 1 - VIP 7)</p>
+                </div>
+            </div>
+
+            <!-- Mandatory 4-Day Notice Highlight -->
+            <div class="bg-amber-500/10 border-l-4 border-amber-500 rounded-2xl p-4 shadow-sm text-amber-900 space-y-2">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-amber-600 text-lg"></i>
+                    <h3 class="text-sm font-bold text-amber-900">เงื่อนไขเวลาในการสั่งอาหาร</h3>
+                </div>
+                <p class="text-xs leading-relaxed text-amber-800">
+                    ⚠️ <span class="font-bold underline">ผู้เข้าพักต้องสั่งอาหารล่วงหน้าอย่างน้อย 4 วัน ก่อนวันเข้าพัก</span> เพื่อให้เจ้าหน้าที่บ้านพักรับรองตระเตรียมวัตถุดิบและจัดทำอาหารสดใหม่ล่วงหน้า
+                </p>
+            </div>
+
+            <!-- Food Order Rules Checklist -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+                <h3 class="text-sm font-bold text-navy-900 flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <i class="fa-solid fa-list-check text-gold-500"></i>
+                    เงื่อนไขและข้อปฏิบัติตามระเบียบ
+                </h3>
+                
+                <ol class="space-y-2.5 text-xs text-slate-700 leading-relaxed list-decimal pl-4">
+                    <li class="pl-1"><span class="font-medium">ระยะเวลาสั่งซื้อ:</span> ต้องสั่งอาหารล่วงหน้าก่อนวันเข้าพักอย่างน้อย 4 วัน</li>
+                    <li class="pl-1"><span class="font-medium">การเลือกห้องพัก:</span> โปรดระบุหมายเลขห้องพัก (VIP 1 ถึง VIP 7) ในหน้าถัดไป</li>
+                    <li class="pl-1"><span class="font-medium">ตัวเลือกประเภทอาหาร:</span> สามารถเลือกประเภทเนื้อสัตว์ (หมู / ไก่ / ทะเล) หรือขนาดได้ในหน้าเมนูอาหาร</li>
+                    <li class="pl-1"><span class="font-medium">ข้อมูลผู้สั่ง:</span> ผู้เข้าพักต้องระบุชื่อ-นามสกุล, เบอร์โทรศัพท์ และห้องพักในขั้นตอนการสรุปรายการ</li>
+                    <li class="pl-1"><span class="font-medium">การส่งข้อมูล:</span> เมื่อกดรับรอง รายการจะถูกส่งไปยัง <span class="font-bold text-navy-900">ไลน์ส่วนตัวของเจ้าหน้าที่บ้านพักรับรอง</span> โดยอัตโนมัติ</li>
+                </ol>
+            </div>
+
+            <!-- Acceptance Checkbox & Continue Button -->
+            <div class="bg-slate-900 rounded-2xl p-4 shadow-md text-white space-y-3 mt-4 border border-slate-800">
+                <label class="flex items-start gap-3 cursor-pointer group">
+                    <input type="checkbox" id="accept-rules" onchange="toggleRuleAcceptance()" class="mt-1 w-4 h-4 text-gold-500 rounded border-slate-600 focus:ring-gold-500 focus:ring-offset-slate-900 accent-gold-500 cursor-pointer">
+                    <span class="text-xs text-slate-200 font-medium group-hover:text-white leading-snug">
+                        ข้าพเจ้าได้อ่าน เข้าใจ และยินยอมปฏิบัติตามระเบียบการสั่งอาหารล่วงหน้าของบ้านพักรับรองสถานีรายงานภูหมันขาว
+                    </span>
+                </label>
+
+                <button id="btn-to-booking" onclick="switchTab('food')" disabled class="w-full py-3 px-4 rounded-xl font-semibold text-sm bg-slate-700 text-slate-400 cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-sm">
+                    <span>รับทราบระเบียบ & ถัดไป (เลือกเมนูอาหาร)</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- TAB 2 (หน้าที่ 2): FOOD MENU & ORDERING -->
+        <section id="tab-food" class="space-y-3 hidden">
+            <!-- Header Banner -->
+            <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <h2 class="text-sm font-bold text-navy-900">รายการเมนูอาหารสั่งล่วงหน้า</h2>
+                    <p class="text-[11px] text-slate-500">เลือกอาหารและเลือกตัวเลือกเนื้อสัตว์/ขนาด</p>
+                </div>
+                <span class="text-[10px] bg-amber-50 text-amber-700 px-2 py-1 rounded-full border border-amber-200 font-medium">
+                    <i class="fa-solid fa-clock text-amber-500 mr-1"></i>สั่งล่วงหน้า 4 วัน
+                </span>
+            </div>
+
+            <!-- Menu Search & Filter -->
+            <div class="space-y-2">
+                <div class="relative">
+                    <input type="text" id="menu-search" oninput="filterMenu()" placeholder="ค้นหารายการอาหาร / เครื่องดื่ม..." class="w-full text-xs p-3 pl-9 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white shadow-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-slate-400 text-xs"></i>
+                </div>
+
+                <!-- Category Quick Selector - 2 Rows Grid -->
+                <div class="grid grid-rows-2 grid-flow-col auto-cols-max gap-1.5 overflow-x-auto hide-scrollbar py-1 text-[11px]">
+                    <button onclick="filterCategory('all', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-navy-900 bg-navy-900 text-white font-medium whitespace-nowrap shadow-sm text-center">ทั้งหมด</button>
+                    <button onclick="filterCategory('ผัด/ทอด', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">ผัด/ทอด</button>
+                    <button onclick="filterCategory('กับแกล้ม', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">กับแกล้ม</button>
+                    <button onclick="filterCategory('อีสาน', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">อาหารอีสาน</button>
+                    <button onclick="filterCategory('ต้ม/แกง', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">ต้ม/แกง</button>
+                    <button onclick="filterCategory('ยำ/ย่าง', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">ยำ/ย่าง</button>
+                    <button onclick="filterCategory('จานเดียว', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">อาหารจานเดียว</button>
+                    <button onclick="filterCategory('ข้าว', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">ประเภทข้าว</button>
+                    <button onclick="filterCategory('เครื่องดื่ม', this)" class="cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center">เครื่องดื่ม</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Menu List -->
+            <div id="food-menu-container" class="space-y-3 pb-24">
+                <!-- Rendered by JavaScript -->
+            </div>
+
+            <!-- Floating Food Cart Bar -->
+            <div id="food-cart-bar" class="fixed bottom-20 left-0 right-0 max-w-md mx-auto px-4 z-30 transition-all duration-300 hidden pointer-events-none">
+                <div class="bg-navy-900 text-white rounded-2xl p-3 shadow-2xl border border-gold-500/40 flex items-center justify-between backdrop-blur-md pointer-events-auto">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <div class="w-9 h-9 rounded-xl bg-gold-500 text-navy-950 flex items-center justify-center font-bold text-base shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <span id="cart-total-count" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-navy-900">0</span>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-300">เลือก <span id="cart-item-count-label" class="font-bold text-gold-400">0</span> รายการ</div>
+                            <div class="text-sm font-bold text-gold-400" id="cart-total-price">0 ฿</div>
+                        </div>
+                    </div>
+
+                    <button onclick="switchTab('my-bookings')" class="py-2 px-3.5 bg-gradient-to-r from-gold-500 to-gold-600 text-navy-950 font-bold text-xs rounded-xl shadow-md hover:brightness-110 flex items-center gap-1.5">
+                        <span>ถัดไป (ระบุผู้สั่ง&ห้อง)</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3 (หน้าที่ 3): USER DETAILS, PHONE, VIP ROOM SELECTOR & CONFIRMATION -->
+        <section id="tab-my-bookings" class="space-y-4 hidden">
+            <!-- Header -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-1">
+                <h2 class="text-base font-bold text-navy-900">ระบุผู้สั่งและห้องพัก (VIP 1 - VIP 7)</h2>
+                <p class="text-xs text-slate-500">กรอกข้อมูลผู้เข้าพักเพื่อจัดส่งรายการสั่งอาหารให้เจ้าหน้าที่</p>
+            </div>
+
+            <!-- Customer & Room Form Card -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-4">
+                <h3 class="text-xs font-bold text-navy-900 flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                    <i class="fa-solid fa-id-card text-gold-500"></i>
+                    ข้อมูลผู้สั่งอาหาร & เบอร์โทรประสานงาน
+                </h3>
+
+                <!-- Orderer Name -->
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-slate-700">ชื่อ - นามสกุล ผู้สั่ง / หัวหน้าคณะ <span class="text-red-500">*</span></label>
+                    <input type="text" id="orderer-name" oninput="saveCustomerInfo()" placeholder="เช่น ร.อ. สมชาย ใจดี" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-slate-50">
+                </div>
+
+                <!-- Phone Number -->
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-slate-700">เบอร์โทรศัพท์ประสานงาน <span class="text-red-500">*</span></label>
+                    <input type="tel" id="orderer-phone" oninput="saveCustomerInfo()" placeholder="เช่น 081-234-5678" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-slate-50">
+                </div>
+
+                <!-- VIP Room Selector (Strictly VIP 1 to VIP 7 Only) -->
+                <div class="space-y-2 pt-1 border-t border-slate-100">
+                    <label class="block text-xs font-semibold text-slate-700 flex items-center justify-between">
+                        <span>เลือกห้องพัก <span class="text-red-500">*</span></span>
+                        <span class="text-[10px] text-slate-400 font-normal">(เฉพาะห้อง VIP 1 - VIP 7)</span>
+                    </label>
+                    <div class="grid grid-cols-4 gap-1.5 py-1">
+                        <button type="button" onclick="selectFoodRoom('VIP 1')" id="food-room-VIP1" class="food-room-pill py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 1</button>
+                        <button type="button" onclick="selectFoodRoom('VIP 2')" id="food-room-VIP2" class="food-room-pill py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 2</button>
+                        <button type="button" onclick="selectFoodRoom('VIP 3')" id="food-room-VIP3" class="food-room-pill py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 3</button>
+                        <button type="button" onclick="selectFoodRoom('VIP 4')" id="food-room-VIP4" class="food-room-pill py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 4</button>
+                        <button type="button" onclick="selectFoodRoom('VIP 5')" id="food-room-VIP5" class="food-room-pill py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 5</button>
+                        <button type="button" onclick="selectFoodRoom('VIP 6')" id="food-room-VIP6" class="food-room-pill py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 6</button>
+                        <button type="button" onclick="selectFoodRoom('VIP 7')" id="food-room-VIP7" class="food-room-pill col-span-2 py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center">VIP 7</button>
+                    </div>
+                </div>
+
+                <!-- Special Note / Additional Kitchen Request -->
+                <div class="space-y-1 pt-1 border-t border-slate-100">
+                    <label class="block text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <i class="fa-solid fa-pen-to-square text-gold-500"></i>
+                        รายละเอียด / หมายเหตุเพิ่มเติม
+                    </label>
+                    <textarea id="orderer-special-note" oninput="saveCustomerInfo()" rows="2" placeholder="เช่น แพ้อาหาร, ไม่เผ็ด, ขอรสจัด ฯลฯ" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-slate-50 resize-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Active Food Orders Summary Card -->
+            <div id="my-food-orders-card" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+                <!-- Javascript Filled -->
+            </div>
+
+            <!-- FINAL CONFIRMATION BUTTON CARD -->
+            <div id="final-confirmation-card" class="bg-gradient-to-r from-navy-900 via-slate-900 to-navy-950 rounded-2xl p-4 text-white shadow-xl border border-gold-500/40 space-y-3">
+                <div class="flex items-center gap-2.5 text-gold-400">
+                    <div class="w-8 h-8 rounded-full bg-gold-500/20 border border-gold-400 flex items-center justify-center font-bold text-sm">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-white">ยืนยันการสั่งอาหารสรุปสุดท้าย</h3>
+                        <p class="text-[10px] text-slate-300">ตรวจสอบความถูกต้องก่อนส่งข้อมูลตรงหาเจ้าหน้าที่</p>
+                    </div>
+                </div>
+
+                <div class="bg-navy-950/80 p-3 rounded-xl border border-slate-800 text-xs space-y-1.5">
+                    <div class="flex justify-between text-slate-300">
+                        <span>สถานะรายการ:</span>
+                        <span id="final-status-badge" class="font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/30 text-[10px]">รอยืนยันสั่งอาหาร</span>
+                    </div>
+                    <div class="flex justify-between text-slate-300">
+                        <span>ยอดรวมค่าอาหารทั้งสิ้น:</span>
+                        <span id="final-grand-total" class="font-bold text-gold-400 text-sm">0 ฿</span>
+                    </div>
+                </div>
+
+                <button id="btn-final-confirm" onclick="executeFinalConfirmation()" class="w-full py-3 px-4 rounded-xl font-bold text-xs bg-gradient-to-r from-gold-500 to-gold-600 text-navy-950 hover:brightness-110 transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-brands fa-line text-base"></i>
+                    <span>ยืนยันส่งสั่งอาหาร & แจ้งเจ้าหน้าที่บ้านพักรับรอง</span>
+                </button>
+            </div>
+
+            <!-- Simulated Officer LINE Notification Preview Box -->
+            <div class="bg-emerald-950/90 rounded-2xl p-4 text-emerald-100 shadow-lg border border-emerald-500/30 space-y-3">
+                <div class="flex items-center justify-between border-b border-emerald-800/80 pb-2.5">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-full bg-emerald-500 text-emerald-950 flex items-center justify-center text-xs font-bold">
+                            <i class="fa-brands fa-line"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white">LINE Notify ถึง: เจ้าหน้าที่บ้านพักรับรอง</div>
+                            <div class="text-[10px] text-emerald-300">ตัวอย่างข้อความแจ้งเตือนเข้าไลน์ส่วนตัวเจ้าหน้าที่</div>
+                        </div>
+                    </div>
+                    <span class="text-[9px] bg-emerald-800/60 px-2 py-0.5 rounded text-emerald-200 font-mono">LIVE PREVIEW</span>
+                </div>
+
+                <div class="bg-emerald-900/60 rounded-xl p-3 font-mono text-[11px] leading-relaxed text-emerald-200 border border-emerald-700/50 whitespace-pre-wrap" id="line-officer-preview-text">
+📌 [แจ้งเตือนสั่งอาหารล่วงหน้า]
+สถานีรายงานภูหมันขาว
+
+ยังไม่มีรายการสั่งอาหารในขณะนี้
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="copyLinePreview()" class="flex-1 py-2 px-3 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-medium flex items-center justify-center gap-1.5 transition-all">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>คัดลอกข้อความไลน์</span>
+                    </button>
+                    <button onclick="openScriptModal()" class="py-2 px-3 bg-emerald-900 hover:bg-emerald-800 text-emerald-300 border border-emerald-600 rounded-xl text-xs font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-code"></i>
+                        <span>ดูโค้ด Apps Script</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (Updated 3 Tabs) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-navy-900 border-t border-slate-800 text-slate-400 z-40 max-w-md mx-auto shadow-2xl">
+        <div class="grid grid-cols-3 h-16">
+            <button onclick="switchTab('regulations')" id="nav-regulations" class="flex flex-col items-center justify-center space-y-1 text-gold-400 font-semibold">
+                <i class="fa-solid fa-file-shield text-base"></i>
+                <span class="text-[10px]">1. ระเบียบ</span>
+            </button>
+            <button onclick="switchTab('food')" id="nav-food" class="flex flex-col items-center justify-center space-y-1 hover:text-slate-200">
+                <i class="fa-solid fa-utensils text-base"></i>
+                <span class="text-[10px]">2. เมนูอาหาร</span>
+            </button>
+            <button onclick="switchTab('my-bookings')" id="nav-my-bookings" class="flex flex-col items-center justify-center space-y-1 hover:text-slate-200">
+                <i class="fa-solid fa-user-pen text-base"></i>
+                <span class="text-[10px]">3. ระบุผู้สั่ง&ห้อง</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ORDER CONFIRMATION MODAL -->
+    <div id="order-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+        <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-2xl p-5 space-y-4 max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom duration-300">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-navy-900">สรุปรายการสั่งอาหารล่วงหน้า</h3>
+                        <p class="text-[11px] text-slate-500">สำหรับห้องพัก: <span id="modal-room-id" class="font-bold text-navy-900">VIP 1</span></p>
+                    </div>
+                </div>
+                <button onclick="closeOrderModal()" class="text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Itemized List -->
+            <div id="modal-item-list" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                <!-- Javascript Populated -->
+            </div>
+
+            <!-- Special Instructions / Additional Notes Input inside Order Summary Modal -->
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 space-y-1">
+                <label class="block text-[11px] font-bold text-navy-900 flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-to-square text-gold-500"></i>
+                    รายละเอียด / หมายเหตุเพิ่มเติม (เช่น แพ้อาหาร, ไม่เผ็ด, ขอรสจัด ฯลฯ):
+                </label>
+                <textarea id="modal-special-note" oninput="saveSpecialNoteFromModal()" rows="2" placeholder="ระบุรายละเอียดหรือความต้องการเพิ่มเติม..." class="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white resize-none"></textarea>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 space-y-2">
+                <div class="flex justify-between text-xs text-slate-600">
+                    <span>จำนวนรายการทั้งหมด:</span>
+                    <span id="modal-total-items-count" class="font-semibold">0 รายการ</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-navy-900">
+                    <span>ยอดรวมทั้งสิ้น:</span>
+                    <span id="modal-total-price" class="text-gold-600">0 ฿</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
+                <div class="font-semibold text-navy-900 flex items-center gap-1">
+                    <i class="fa-brands fa-line text-emerald-600"></i>
+                    ส่งข้อมูลไปยัง: เจ้าหน้าที่บ้านพักรับรอง
+                </div>
+                <p class="text-[11px] text-slate-500 leading-snug">รายการอาหารจะถูกบันทึกและส่งข้อความแจ้งเตือนไปที่ไลน์ส่วนตัวของเจ้าหน้าที่ทันที</p>
+            </div>
+
+            <div class="flex gap-2 pt-1">
+                <button onclick="closeOrderModal()" class="flex-1 py-3 bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold hover:bg-slate-200">
+                    แก้ไขรายการ
+                </button>
+                <button onclick="confirmAndSendFoodOrder()" class="flex-1 py-3 bg-navy-900 text-gold-400 rounded-xl text-xs font-bold hover:bg-navy-800 shadow-md">
+                    ยืนยันส่งสั่งอาหาร
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOGLE APPS SCRIPT CODE MODAL -->
+    <div id="script-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-md rounded-2xl p-4 space-y-3 max-h-[85vh] flex flex-col">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                <h3 class="text-xs font-bold text-navy-900 flex items-center gap-1.5">
+                    <i class="fa-solid fa-code text-gold-500"></i>
+                    Google Apps Script Integration
+                </h3>
+                <button onclick="closeScriptModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <p class="text-[11px] text-slate-600">
+                โค้ดสำหรับนำไปวางใน Google Apps Script เพื่อให้บันทึกจองลง Google Calendar และเด้ง LINE Notify หาเจ้าหน้าที่บ้านพักรับรองโดยอัตโนมัติ:
+            </p>
+
+            <pre class="bg-slate-900 text-emerald-400 text-[10px] p-3 rounded-xl overflow-x-auto flex-1 font-mono leading-relaxed border border-slate-800">
+function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var token = "YOUR_LINE_NOTIFY_TOKEN";
+  
+  // 1. Save to Google Calendar
+  var cal = CalendarApp.getDefaultCalendar();
+  cal.createEvent("จองบ้านพัก " + data.rooms.join(", "),
+    new Date(data.checkin),
+    new Date(data.checkout),
+    { description: "หัวหน้าคณะ: " + data.headName + "\nโทร: " + data.phone }
+  );
+
+  // 2. Send LINE Notify to Officer
+  var msg = "\n📌 มีการจองบ้านพักรับรองภูหมันขาว\nห้อง: " + data.rooms.join(", ") +
+            "\nผู้เข้าพัก: " + data.headName + " (" + data.phone + ")";
+            
+  UrlFetchApp.fetch("https://notify-api.line.me/api/notify", {
+    "method": "post",
+    "headers": {"Authorization": "Bearer " + token},
+    "payload": {"message": msg}
+  });
+}
+            </pre>
+
+            <button onclick="closeScriptModal()" class="w-full py-2.5 bg-navy-900 text-white text-xs font-bold rounded-xl">
+                ปิดหน้าต่าง
+            </button>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC & STATE MANAGEMENT -->
+    <script>
+        // State Management
+        let appState = {
+            rulesAccepted: false,
+            selectedRoom: 'VIP 1',
+            ordererName: '',
+            ordererPhone: '',
+            specialNote: '',
+            cart: {},
+            isFinalConfirmed: false
+        };
+
+        function saveCustomerInfo() {
+            appState.ordererName = document.getElementById('orderer-name')?.value || '';
+            appState.ordererPhone = document.getElementById('orderer-phone')?.value || '';
+            appState.specialNote = document.getElementById('orderer-special-note')?.value || '';
+            updateOfficerPreviewText();
+        }
+
+        function selectFoodRoom(roomNum) {
+            appState.selectedRoom = roomNum;
+            const sanitizeId = roomNum.replace(/\s+/g, '');
+            
+            document.querySelectorAll('.food-room-pill').forEach(btn => {
+                const isVIP7 = btn.id === 'food-room-VIP7';
+                btn.className = `food-room-pill ${isVIP7 ? 'col-span-2' : ''} py-2 px-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-navy-900 hover:text-white transition-all text-center`;
+            });
+
+            const activeBtn = document.getElementById(`food-room-${sanitizeId}`);
+            if (activeBtn) {
+                const isVIP7 = sanitizeId === 'VIP7';
+                activeBtn.className = `food-room-pill ${isVIP7 ? 'col-span-2' : ''} py-2 px-2 rounded-xl text-xs font-bold border border-navy-900 bg-navy-900 text-white shadow-md transition-all text-center`;
+            }
+
+            updateOfficerPreviewText();
+        }
+
+        function renderMyBookings() {
+            const foodCard = document.getElementById('my-food-orders-card');
+            let foodTotal = 0;
+            const cartKeys = Object.keys(appState.cart);
+
+            if (cartKeys.length > 0) {
+                let itemsHtml = '';
+                cartKeys.forEach(k => {
+                    const item = appState.cart[k];
+                    const itemTotal = item.price * item.qty;
+                    foodTotal += itemTotal;
+                    itemsHtml += `
+                        <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-100 last:border-0">
+                            <div>
+                                <span class="font-medium text-slate-800">${item.name}</span>
+                                ${item.variant ? `<span class="text-[10px] text-navy-800 font-bold bg-navy-50 px-1.5 py-0.5 rounded border border-navy-100 ml-1">(${item.variant})</span>` : ''}
+                                <div class="text-[10px] text-slate-400">${item.price} ฿ × ${item.qty}</div>
+                            </div>
+                            <span class="font-bold text-slate-900">${itemTotal.toLocaleString()} ฿</span>
+                        </div>
+                    `;
+                });
+
+                foodCard.innerHTML = `
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <span class="text-xs font-bold text-navy-900 flex items-center gap-1.5">
+                            <i class="fa-solid fa-utensils text-gold-500"></i>
+                            สรุปรายการสั่งอาหารล่วงหน้า
+                        </span>
+                        <span class="text-[10px] bg-navy-900 text-gold-400 px-2 py-0.5 rounded-full font-bold">ห้อง ${appState.selectedRoom}</span>
+                    </div>
+                    <div class="space-y-1 my-2">
+                        ${itemsHtml}
+                    </div>
+                    <div class="flex justify-between pt-2 border-t border-slate-100 text-xs font-bold text-navy-900">
+                        <span>ยอดรวมค่าอาหารทั้งสิ้น:</span>
+                        <span class="text-gold-600 text-sm">${foodTotal.toLocaleString()} ฿</span>
+                    </div>
+                `;
+            } else {
+                foodCard.innerHTML = `
+                    <div class="text-center py-6 text-slate-400">
+                        <i class="fa-solid fa-utensils text-2xl mb-1"></i>
+                        <p class="text-xs">ยังไม่ได้เลือกรายการอาหาร</p>
+                        <button onclick="switchTab('food')" class="mt-2 text-xs text-gold-600 font-bold hover:underline">ไปเลือกเมนูอาหาร (หน้าที่ 2)</button>
+                    </div>
+                `;
+            }
+
+            document.getElementById('final-grand-total').innerText = `${foodTotal.toLocaleString()} ฿`;
+
+            const badge = document.getElementById('final-status-badge');
+            const btn = document.getElementById('btn-final-confirm');
+
+            if (appState.isFinalConfirmed) {
+                badge.className = "font-bold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/30 text-[10px]";
+                badge.innerText = "ยืนยันส่งสั่งอาหารแล้ว";
+                btn.className = "w-full py-3 px-4 rounded-xl font-bold text-xs bg-emerald-600 text-white shadow-md flex items-center justify-center gap-2 cursor-default";
+                btn.innerHTML = `<i class="fa-solid fa-circle-check text-base"></i><span>แจ้งเตือนเจ้าหน้าที่บ้านพักรับรองเรียบร้อยแล้ว</span>`;
+            } else {
+                badge.className = "font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/30 text-[10px]";
+                badge.innerText = "รอยืนยันสั่งอาหาร";
+                btn.className = "w-full py-3 px-4 rounded-xl font-bold text-xs bg-gradient-to-r from-gold-500 to-gold-600 text-navy-950 hover:brightness-110 transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer";
+                btn.innerHTML = `<i class="fa-brands fa-line text-base"></i><span>ยืนยันส่งสั่งอาหาร & แจ้งเจ้าหน้าที่บ้านพักรับรอง</span>`;
+            }
+
+            updateOfficerPreviewText();
+        }
+
+        function executeFinalConfirmation() {
+            saveCustomerInfo();
+            const cartKeys = Object.keys(appState.cart);
+
+            if (cartKeys.length === 0) {
+                alert('⚠️ ยังไม่ได้เลือกรายการอาหาร กรุณาไปที่หน้าที่ 2 เพื่อเลือกรายการอาหารก่อนครับ');
+                switchTab('food');
+                return;
+            }
+
+            if (!appState.ordererName.trim()) {
+                alert('⚠️ กรุณาระบุชื่อผู้สั่งอาหาร / หัวหน้าคณะ');
+                document.getElementById('orderer-name')?.focus();
+                return;
+            }
+
+            if (!appState.ordererPhone.trim()) {
+                alert('⚠️ กรุณาระบุเบอร์โทรศัพท์ประสานงาน');
+                document.getElementById('orderer-phone')?.focus();
+                return;
+            }
+
+            appState.isFinalConfirmed = true;
+            saveLocalStorageData();
+            renderMyBookings();
+
+            alert(`🎉 ยืนยันการสั่งอาหารสำเร็จ!\n\nผู้สั่ง: ${appState.ordererName}\nเบอร์โทร: ${appState.ordererPhone}\nห้องพัก: ${appState.selectedRoom}\n\nระบบทำการส่งข้อความสั่งอาหารไปยังไลน์ส่วนตัวเจ้าหน้าที่บ้านพักรับรองเรียบร้อยครับ`);
+        }
+
+        function updateOfficerPreviewText() {
+            const previewEl = document.getElementById('line-officer-preview-text');
+            if (!previewEl) return;
+
+            let text = `📌 [แจ้งเตือนรายการสั่งอาหารล่วงหน้า]\nสถานีรายงานภูหมันขาว\n------------------------------\n`;
+            text += `👤 ผู้สั่ง/หัวหน้าคณะ: ${appState.ordererName || '(ยังไม่ระบุ)'}\n`;
+            text += `📞 เบอร์โทรประสานงาน: ${appState.ordererPhone || '(ยังไม่ระบุ)'}\n`;
+            text += `🚪 ห้องพัก: ${appState.selectedRoom}\n------------------------------\n`;
+
+            const cartKeys = Object.keys(appState.cart);
+            let foodTotal = 0;
+
+            if (cartKeys.length > 0) {
+                text += `🍲 [รายการสั่งอาหาร]\n`;
+                cartKeys.forEach(k => {
+                    const item = appState.cart[k];
+                    const itemTotal = item.price * item.qty;
+                    foodTotal += itemTotal;
+                    text += `  - ${item.name} ${item.variant ? `(${item.variant})` : ''} x${item.qty} = ${itemTotal.toLocaleString()} ฿\n`;
+                });
+                if (appState.specialNote.trim()) {
+                    text += `📝 หมายเหตุเพิ่มเติม: ${appState.specialNote}\n`;
+                }
+                text += `\n💰 ยอดรวมค่าอาหาร: ${foodTotal.toLocaleString()} บาท\n`;
+            } else {
+                text += `🍲 ยังไม่ได้เลือกรายการอาหาร\n`;
+            }
+
+            text += `------------------------------\nเรียน เจ้าหน้าที่บ้านพักรับรอง โปรดตระเตรียมวัตถุดิบและจัดทำตามกำหนด`;
+
+            previewEl.innerText = text;
+        }
+
+        // --- FOOD DATABASE ---
+        const FOOD_MENU = [
+            // ผัด/ทอด
+            { id: 'f1', name: 'ไข่เจียว', category: 'ผัด/ทอด', variants: [{ name: 'หมูสับ', price: 60 }, { name: 'ทะเล', price: 80 }] },
+            { id: 'f2', name: 'แหนมซี่โครงหมูทอด', category: 'ผัด/ทอด', price: 150 },
+            { id: 'f3', name: 'ปีกไก่ทอดเกลือ', category: 'ผัด/ทอด', price: 150 },
+            { id: 'f4', name: 'ไก่ผัดเม็ดมะม่วงหิมพานต์', category: 'ผัด/ทอด', price: 180 },
+            { id: 'f5', name: 'ทะเลผัดฉ่า', category: 'ผัด/ทอด', price: 200 },
+            { id: 'f6', name: 'ไข่เยี่ยวม้ากะเพรากรอบ', category: 'ผัด/ทอด', price: 150 },
+            { id: 'f7', name: 'กะหล่ำปลีผัดน้ำปลา', category: 'ผัด/ทอด', price: 80 },
+            { id: 'f8', name: 'ผัดผักบุ้งไฟแดง', category: 'ผัด/ทอด', price: 80 },
+            { id: 'f9', name: 'คะน้าไฟแดง', category: 'ผัด/ทอด', price: 80 },
+            { id: 'f10', name: 'ผัดยอดฟักแม้ว', category: 'ผัด/ทอด', price: 80 },
+            { id: 'f11', name: 'ผัดผักรวม', category: 'ผัด/ทอด', variants: [{ name: 'หมู', price: 150 }, { name: 'กุ้ง', price: 150 }, { name: 'ปลาหมึก', price: 150 }] },
+            { id: 'f12', name: 'หมูป่าผัดเผ็ด', category: 'ผัด/ทอด', price: 150 },
+            { id: 'f13', name: 'ปลาหมึกผัดไข่เค็ม', category: 'ผัด/ทอด', price: 150 },
+            { id: 'f14', name: 'ปลาทับทิมทอดกระเทียม', category: 'ผัด/ทอด', price: 220 },
+            { id: 'f15', name: 'ทอดมันปลากราย', category: 'ผัด/ทอด', price: 150 },
+
+            // กับแกล้ม
+            { id: 'a1', name: 'ออเดิร์ฟ', category: 'กับแกล้ม', price: 150 },
+            { id: 'a2', name: 'ถั่วทอด', category: 'กับแกล้ม', price: 80 },
+            { id: 'a3', name: 'เม็ดมะม่วงหิมพานต์ทอด', category: 'กับแกล้ม', price: 150 },
+            { id: 'a4', name: 'ข้าวเกรียบกุ้งทอด', category: 'กับแกล้ม', price: 70 },
+            { id: 'a5', name: 'ไส้กรอกอีสาน', category: 'กับแกล้ม', price: 120 },
+            { id: 'a6', name: 'แหนมทรงเครื่อง', category: 'กับแกล้ม', price: 120 },
+
+            // อาหารอีสาน
+            { id: 'e1', name: 'ลาบหมู', category: 'อีสาน', variants: [{ name: 'เล็ก', price: 80 }, { name: 'ใหญ่', price: 150 }] },
+            { id: 'e2', name: 'ลาบไก่', category: 'อีสาน', variants: [{ name: 'เล็ก', price: 80 }, { name: 'ใหญ่', price: 150 }] },
+            { id: 'e3', name: 'น้ำตกหมู', category: 'อีสาน', variants: [{ name: 'เล็ก', price: 80 }, { name: 'ใหญ่', price: 150 }] },
+            { id: 'e4', name: 'คอหมูย่าง', category: 'อีสาน', price: 150 },
+
+            // ต้ม/แกง
+            { id: 't1', name: 'แกงป่า', category: 'ต้ม/แกง', variants: [{ name: 'หมู', price: 150 }, { name: 'ไก่', price: 150 }] },
+            { id: 't2', name: 'แกงส้มชะอมกุ้ง', category: 'ต้ม/แกง', price: 180 },
+            { id: 't3', name: 'ต้มจืดเต้าหู้หมูสับ', category: 'ต้ม/แกง', price: 150 },
+            { id: 't4', name: 'ต้มยำไก่บ้าน', category: 'ต้ม/แกง', price: 150 },
+            { id: 't5', name: 'ต้มจืดกระดูกอ่อนมะระแม้ว', category: 'ต้ม/แกง', price: 150 },
+            { id: 't6', name: 'ต้มแซบกระดูกอ่อน', category: 'ต้ม/แกง', price: 150 },
+            { id: 't7', name: 'ต้มยำรวมมิตรทะเล', category: 'ต้ม/แกง', variants: [{ name: 'ถ้วย', price: 100 }, { name: 'หม้อ', price: 200 }] },
+
+            // ยำ/ย่าง
+            { id: 'y1', name: 'ยำรวมมิตรทะเล', category: 'ยำ/ย่าง', variants: [{ name: 'เล็ก', price: 120 }, { name: 'ใหญ่', price: 200 }] },
+            { id: 'y2', name: 'หมูมะนาว', category: 'ยำ/ย่าง', price: 150 },
+            { id: 'y3', name: 'แดดเดียวทอด', category: 'ยำ/ย่าง', price: 150 },
+            { id: 'y4', name: 'หมูย่างพริกไทยดำ', category: 'ยำ/ย่าง', price: 150 },
+            { id: 'y5', name: 'กุ้งแช่น้ำปลา', category: 'ยำ/ย่าง', price: 200 },
+
+            // จานเดียว
+            { id: 'd1', name: 'ราดหน้า', category: 'จานเดียว', variants: [{ name: 'หมู', price: 60 }, { name: 'ไก่', price: 60 }, { name: 'ทะเล', price: 70 }] },
+            { id: 'd2', name: 'ข้าวผัด เล็ก', category: 'จานเดียว', variants: [{ name: 'หมู', price: 60 }, { name: 'ไก่', price: 60 }, { name: 'ทะเล', price: 60 }] },
+            { id: 'd3', name: 'ข้าวกะเพรา', category: 'จานเดียว', variants: [{ name: 'หมู', price: 60 }, { name: 'ไก่', price: 60 }, { name: 'ทะเล', price: 70 }] },
+
+            // ข้าว
+            { id: 'r1', name: 'ข้าวเปล่า (จาน)', category: 'ข้าว', price: 15 },
+            { id: 'r2', name: 'ข้าวเปล่า (โถ)', category: 'ข้าว', price: 60 },
+            { id: 'r3', name: 'ข้าวผัด ใหญ่', category: 'ข้าว', variants: [{ name: 'หมู/ไก่', price: 200 }, { name: 'ทะเล', price: 250 }] },
+
+            // เครื่องดื่ม
+            { id: 'b1', name: 'น้ำอัดลมขวดใหญ่', category: 'เครื่องดื่ม', price: 35 },
+            { id: 'b2', name: 'น้ำสิงห์ขวดใหญ่', category: 'เครื่องดื่ม', price: 20 },
+            { id: 'b3', name: 'น้ำสิงห์ขวดเล็ก', category: 'เครื่องดื่ม', price: 10 },
+            { id: 'b4', name: 'โซดา', category: 'เครื่องดื่ม', price: 10 },
+            { id: 'b5', name: 'เบียร์ช้าง', category: 'เครื่องดื่ม', price: 70 },
+            { id: 'b6', name: 'เบียร์ลีโอ', category: 'เครื่องดื่ม', price: 75 },
+            { id: 'b7', name: 'เบียร์สิงห์', category: 'เครื่องดื่ม', price: 80 },
+            { id: 'b8', name: 'หงส์ทอง', category: 'เครื่องดื่ม', price: 290 }
+        ];
+
+        let selectedCategoryFilter = 'all';
+        let itemSelectedVariants = {};
+
+        // --- NAVIGATION & SWITCH TABS ---
+        function switchTab(tabId) {
+            if (tabId !== 'regulations' && !appState.rulesAccepted) {
+                alert('⚠️ กรุณากดยอมรับระเบียบการสั่งอาหารล่วงหน้าก่อนครับ');
+                return;
+            }
+
+            document.getElementById('tab-regulations').classList.add('hidden');
+            document.getElementById('tab-food').classList.add('hidden');
+            document.getElementById('tab-my-bookings').classList.add('hidden');
+
+            document.getElementById('nav-regulations').className = "flex flex-col items-center justify-center space-y-1 hover:text-slate-200 text-slate-400";
+            document.getElementById('nav-food').className = "flex flex-col items-center justify-center space-y-1 hover:text-slate-200 text-slate-400";
+            document.getElementById('nav-my-bookings').className = "flex flex-col items-center justify-center space-y-1 hover:text-slate-200 text-slate-400";
+
+            document.getElementById('step-1-indicator').className = "flex items-center gap-1 text-slate-400";
+            document.getElementById('step-2-indicator').className = "flex items-center gap-1 text-slate-400";
+            document.getElementById('step-3-indicator').className = "flex items-center gap-1 text-slate-400";
+
+            document.getElementById('step-1-indicator').querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center text-[10px] font-bold";
+            document.getElementById('step-2-indicator').querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center text-[10px] font-bold";
+            document.getElementById('step-3-indicator').querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center text-[10px] font-bold";
+
+            if (tabId === 'regulations') {
+                document.getElementById('tab-regulations').classList.remove('hidden');
+                document.getElementById('nav-regulations').className = "flex flex-col items-center justify-center space-y-1 text-gold-400 font-semibold";
+                document.getElementById('step-1-indicator').className = "flex items-center gap-1 text-gold-400 font-semibold";
+                document.getElementById('step-1-indicator').querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-gold-500 text-navy-950 flex items-center justify-center text-[10px] font-bold";
+            } else if (tabId === 'food') {
+                document.getElementById('tab-food').classList.remove('hidden');
+                document.getElementById('nav-food').className = "flex flex-col items-center justify-center space-y-1 text-gold-400 font-semibold";
+                document.getElementById('step-2-indicator').className = "flex items-center gap-1 text-gold-400 font-semibold";
+                document.getElementById('step-2-indicator').querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-gold-500 text-navy-950 flex items-center justify-center text-[10px] font-bold";
+                renderFoodMenu();
+            } else if (tabId === 'my-bookings') {
+                document.getElementById('tab-my-bookings').classList.remove('hidden');
+                document.getElementById('nav-my-bookings').className = "flex flex-col items-center justify-center space-y-1 text-gold-400 font-semibold";
+                document.getElementById('step-3-indicator').className = "flex items-center gap-1 text-gold-400 font-semibold";
+                document.getElementById('step-3-indicator').querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-gold-500 text-navy-950 flex items-center justify-center text-[10px] font-bold";
+                renderMyBookings();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- RULE CHECKBOX TOGGLE ---
+        function toggleRuleAcceptance() {
+            const checkbox = document.getElementById('accept-rules');
+            const btn = document.getElementById('btn-to-booking');
+            appState.rulesAccepted = checkbox.checked;
+
+            if (checkbox.checked) {
+                btn.disabled = false;
+                btn.className = "w-full py-3 px-4 rounded-xl font-bold text-xs bg-gradient-to-r from-gold-500 to-gold-600 text-navy-950 shadow-md hover:brightness-110 transition-all cursor-pointer flex items-center justify-center gap-2";
+            } else {
+                btn.disabled = true;
+                btn.className = "w-full py-3 px-4 rounded-xl font-semibold text-xs bg-slate-700 text-slate-400 cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-sm";
+            }
+        }
+
+        // --- FOOD RENDER & CART SYSTEM ---
+        function filterCategory(cat, element) {
+            selectedCategoryFilter = cat;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                btn.className = "cat-pill px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium whitespace-nowrap text-center";
+            });
+            if (element) {
+                element.className = "cat-pill px-3 py-1.5 rounded-xl border border-navy-900 bg-navy-900 text-white font-medium whitespace-nowrap shadow-sm text-center";
+            }
+            renderFoodMenu();
+        }
+
+        function filterMenu() {
+            renderFoodMenu();
+        }
+
+        function selectItemVariant(itemId, variantIndex) {
+            itemSelectedVariants[itemId] = variantIndex;
+            renderFoodMenu();
+        }
+
+        function renderFoodMenu() {
+            const container = document.getElementById('food-menu-container');
+            if (!container) return;
+
+            const searchQuery = (document.getElementById('menu-search')?.value || '').toLowerCase().trim();
+
+            const filteredItems = FOOD_MENU.filter(item => {
+                const matchesCategory = selectedCategoryFilter === 'all' || item.category === selectedCategoryFilter;
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery) || item.category.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filteredItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-utensils text-slate-300 text-3xl mb-2"></i>
+                        <p class="text-xs text-slate-500 font-medium">ไม่พบรายการอาหารที่ค้นหา</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            filteredItems.forEach(item => {
+                let currentVariantIdx = itemSelectedVariants[item.id] || 0;
+                let activePrice = item.price;
+                let activeVariantName = '';
+
+                if (item.variants && item.variants.length > 0) {
+                    activePrice = item.variants[currentVariantIdx].price;
+                    activeVariantName = item.variants[currentVariantIdx].name;
+                }
+
+                const cartKey = `${item.id}_${activeVariantName}`;
+                const currentQty = appState.cart[cartKey] ? appState.cart[cartKey].qty : 0;
+
+                let variantButtons = '';
+                if (item.variants && item.variants.length > 0) {
+                    variantButtons = `<div class="flex items-center gap-1 mt-2 flex-wrap">`;
+                    item.variants.forEach((v, idx) => {
+                        const isSelected = idx === currentVariantIdx;
+                        const btnClass = isSelected 
+                            ? "bg-navy-900 text-white border-navy-900 font-bold" 
+                            : "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200";
+                        variantButtons += `
+                            <button onclick="selectItemVariant('${item.id}', ${idx})" class="text-[10px] px-2 py-1 rounded-lg border ${btnClass} transition-all">
+                                ${v.name} (${v.price}฿)
+                            </button>
+                        `;
+                    });
+                    variantButtons += `</div>`;
+                }
+
+                html += `
+                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between gap-3">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-navy-900">${item.name}</h4>
+                                <span class="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded">${item.category}</span>
+                            </div>
+                            ${variantButtons}
+                            <div class="text-xs font-bold text-gold-600 mt-1">${activePrice} ฿</div>
+                        </div>
+
+                        <!-- Quantity Controller -->
+                        <div class="flex items-center gap-2 bg-slate-50 p-1.5 rounded-xl border border-slate-200">
+                            <button onclick="updateFoodQty('${item.id}', '${item.name}', ${activePrice}, '${activeVariantName}', -1)" class="w-7 h-7 rounded-lg bg-white shadow-sm border border-slate-200 text-slate-700 flex items-center justify-center font-bold active:scale-95 text-xs">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <span class="w-5 text-center font-bold text-xs text-navy-900">${currentQty}</span>
+                            <button onclick="updateFoodQty('${item.id}', '${item.name}', ${activePrice}, '${activeVariantName}', 1)" class="w-7 h-7 rounded-lg bg-navy-900 text-white shadow-sm flex items-center justify-center font-bold active:scale-95 text-xs">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            updateCartBar();
+        }
+
+        function updateFoodQty(id, name, price, variant, delta) {
+            const cartKey = `${id}_${variant}`;
+            if (!appState.cart[cartKey]) {
+                if (delta > 0) {
+                    appState.cart[cartKey] = { id, name, price, variant, qty: delta };
+                }
+            } else {
+                appState.cart[cartKey].qty += delta;
+                if (appState.cart[cartKey].qty <= 0) {
+                    delete appState.cart[cartKey];
+                }
+            }
+            appState.isFinalConfirmed = false;
+            saveLocalStorageData();
+            renderFoodMenu();
+        }
+
+        function updateCartBar() {
+            const bar = document.getElementById('food-cart-bar');
+            if (!bar) return;
+
+            const keys = Object.keys(appState.cart);
+            let totalQty = 0;
+            let totalPrice = 0;
+
+            keys.forEach(k => {
+                totalQty += appState.cart[k].qty;
+                totalPrice += (appState.cart[k].price * appState.cart[k].qty);
+            });
+
+            if (totalQty > 0) {
+                bar.classList.remove('hidden');
+                document.getElementById('cart-total-count').innerText = totalQty;
+                document.getElementById('cart-item-count-label').innerText = totalQty;
+                document.getElementById('cart-total-price').innerText = `${totalPrice.toLocaleString()} ฿`;
+            } else {
+                bar.classList.add('hidden');
+            }
+        }
+
+        // --- LOCAL STORAGE AND MODALS ---
+        function saveLocalStorageData() {
+            try {
+                localStorage.setItem('phu_man_khao_app_state', JSON.stringify(appState));
+            } catch (e) {
+                console.error('Storage error:', e);
+            }
+        }
+
+        function loadLocalStorageData() {
+            try {
+                const saved = localStorage.getItem('phu_man_khao_app_state');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    appState = { ...appState, ...parsed };
+                    if (appState.ordererName) {
+                        const nameInput = document.getElementById('orderer-name');
+                        if (nameInput) nameInput.value = appState.ordererName;
+                    }
+                    if (appState.ordererPhone) {
+                        const phoneInput = document.getElementById('orderer-phone');
+                        if (phoneInput) phoneInput.value = appState.ordererPhone;
+                    }
+                    if (appState.specialNote) {
+                        const noteInput = document.getElementById('orderer-special-note');
+                        if (noteInput) noteInput.value = appState.specialNote;
+                    }
+                    if (appState.selectedRoom) {
+                        selectFoodRoom(appState.selectedRoom);
+                    }
+                }
+            } catch (e) {
+                console.error('Load storage error:', e);
+            }
+        }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+        }
+
+        function copyLinePreview() {
+            const text = document.getElementById('line-officer-preview-text').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('📋 คัดลอกข้อความ LINE เรียบร้อยแล้ว!');
+            } catch (err) {
+                alert('ไม่สามารถคัดลอกข้อความอัตโนมัติได้');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function openScriptModal() {
+            document.getElementById('script-modal').classList.remove('hidden');
+        }
+
+        function closeScriptModal() {
+            document.getElementById('script-modal').classList.add('hidden');
+        }
+
+        // Initialize application on startup
+        window.onload = function() {
+            loadLocalStorageData();
+            selectFoodRoom(appState.selectedRoom || 'VIP 1');
+            renderFoodMenu();
+            renderMyBookings();
+        };
+    </script>
+</body>
+</html>
